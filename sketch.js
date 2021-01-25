@@ -1,17 +1,21 @@
+//NameSpacing
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
+//Variables
 var engine, world;
 var box1, pig1;
 var backgroundImg,platform;
 var bird, slingShot;
 
+//Function to load images
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
 
+//Function to create sprites
 function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
@@ -42,6 +46,7 @@ function setup(){
     slingshot = new SlingShot(bird.body,{x:200, y:50});
 }
 
+//Function to display sprites
 function draw(){
     background(backgroundImg);
     Engine.update(engine);
@@ -67,11 +72,20 @@ function draw(){
     slingshot.display();    
 }
 
+//Function for museDragged
 function mouseDragged(){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
 }
 
-
+//Function for mouseReleased
 function mouseReleased(){
     slingshot.fly();
+}
+
+//Function for keyPressed
+function keyPressed(){
+    //Space keyCode = 32
+    if(keyCode === 32){
+       slingshot.attach(bird.body);
+    }
 }

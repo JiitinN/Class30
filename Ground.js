@@ -1,5 +1,6 @@
 class Ground {
     constructor(x,y,width,height) {
+      //Physics code for ground
       var options = {
           isStatic: true
       }
@@ -8,6 +9,7 @@ class Ground {
       this.height = height;
       World.add(world, this.body);
     }
+    //Display code for Ground
     display(){
       var pos =this.body.position;
       rectMode(CENTER);
